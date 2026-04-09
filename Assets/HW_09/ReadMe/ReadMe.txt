@@ -1,7 +1,3 @@
-이미지와 수행일지 내용을 종합해서 README.md 작성해줄게.
-
----
-
 # Team_4DIVE_Quest3 — EDEN
 
 > A VR horror/mystery experience built for Meta Quest 3 using Unity 2022.3 LTS + OpenXR.
