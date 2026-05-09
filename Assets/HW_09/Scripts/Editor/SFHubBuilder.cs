@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using TMPro;
+using HW09;
 
 /// <summary>
 /// EDEN — MainScene "연구소 복도"

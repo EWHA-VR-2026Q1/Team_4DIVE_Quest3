@@ -4,6 +4,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 using System.IO;
 using System.Collections.Generic;
+using HW09;
 
 public class Scene2Builder : Editor
 {

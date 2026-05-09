@@ -1,0 +1,226 @@
+================================================================
+  Scene3_A 에러 수행일지 — 문제 / 원인 / 해결방법
+  Team 4DIVE | Unity 2022.3.62f3 | Meta Quest 3S | OpenXR
+  작성일: 2026-04-12  |  담당 씬: Scene3_A (촛불 집기 인터랙션)
+================================================================
+
+
+────────────────────────────────────────────────────────────────
+에러 1. 컴파일 오류 — CS0246 IRayInteractable 타입 미발견
+────────────────────────────────────────────────────────────────
+
+【문제】
+  Unity 콘솔에 CS0246 에러 발생.
+  "The type or namespace name 'IRayInteractable' could not be found"
+  메시지가 출력되며 스크립트 전체가 컴파일되지 않음.
+
+【원인】
+  XR Interaction Toolkit 패키지(com.unity.xr.interaction.toolkit)가
+  프로젝트에 설치되어 있지 않거나 버전이 맞지 않아
+  IRayInteractable 인터페이스 정의를 찾지 못한 것.
+
+【해결방법】
+  Package Manager에서 XR Interaction Toolkit 설치 여부 확인.
+  본 프로젝트는 OpenXR + OVRInput 방식을 채택하므로
+  XRI 의존 코드를 제거하고 OVRInput 직접 감지 방식으로 통일하여 해결.
+
+
+────────────────────────────────────────────────────────────────
+에러 2. 컴파일 오류 — CS0101 / CS0111 클래스 중복 선언
+         (EX_OVRInput 계열 5개 클래스 + Audios 등 4개 클래스)
+────────────────────────────────────────────────────────────────
+
+【문제】
+  CS0101 "The namespace already contains a definition for 'X'"
+  CS0111 "Type already defines a member called 'X' with the same parameter types"
+  두 종류의 에러가 동시에 대량 발생.
+  EX_OVRInput_Move, EX_OVRInput_Grab, EX_OVRInput_Ray 등
+  EX_OVRInput 계열 클래스 5개와 Audios 등 4개 클래스가 대상.
+
+【원인】
+  패키지 임포트 과정에서 동일 스크립트 파일이 두 경로에 중복 배치됨.
+  파일명이 달라도 내부 클래스명이 동일하거나,
+  Assets/HW_09/eunheay/ 폴더와 외부 패키지 폴더 양쪽에
+  같은 클래스가 각각 존재한 것.
+  Unity는 네임스페이스 없이 클래스명이 동일하면
+  어셈블리 컴파일 단계에서 충돌로 처리함.
+
+【해결방법】
+  중복된 파일 중 패키지 경로에 있는 것을 삭제하여 하나만 남김.
+  (근본 해결: 각 클래스에 namespace를 추가해 충돌 방지)
+
+
+────────────────────────────────────────────────────────────────
+에러 3. 런타임 오류 — InvalidOperationException
+         (구 Input Manager ↔ 새 Input System 혼용 충돌)
+────────────────────────────────────────────────────────────────
+
+【문제】
+  플레이 모드 진입 시 또는 특정 입력 처리 구간에서
+  InvalidOperationException 발생.
+  일부 스크립트의 Input.GetKey / Input.GetAxis 호출이 무시됨.
+
+【원인】
+  Project Settings → Player → Active Input Handling이
+  "Both" 또는 "Input System Package (New)"로 설정된 상태에서
+  구버전 UnityEngine.Input (Legacy) API를 그대로 혼용 호출했기 때문.
+  두 시스템이 섞이면 런타임에서 충돌 발생.
+
+【해결방법】
+  Active Input Handling을 "Input Manager (Old)"로 단일화.
+  또는 구버전 Input.GetKey 호출부를 모두 OVRInput.Get / OVRInput.GetDown
+  방식으로 교체하여 통일. 본 프로젝트는 OVRInput 방식으로 통일하여 해결.
+
+
+────────────────────────────────────────────────────────────────
+에러 4. Inspector 설정 오류 — 캔들이 씬 시작 즉시 바닥에 떨어짐
+         + 컨트롤러 집기(Grab) 전혀 미작동
+────────────────────────────────────────────────────────────────
+
+【문제】
+  씬 실행 시 candle, candle(1) 오브젝트가 중력에 의해 바닥으로 낙하.
+  Meta Quest 3S 컨트롤러로 왼손 그립 트리거를 눌러도
+  캔들이 집히지 않고 아무 반응 없음.
+
+【원인 1 — Use Gravity = true】
+  candle, candle(1) Rigidbody 컴포넌트의 Use Gravity가
+  기본값 true로 방치되어 있었음.
+  씬 시작과 동시에 중력이 적용되어 오브젝트가 낙하.
+
+【원인 2 — Grab Layer = Nothing】
+  Player_OVRInput_Parts에 붙은 EX_OVRInput_Grab 스크립트의
+  Grab Layer 필드가 "Nothing"으로 설정되어 있었음.
+  내부 코드 Physics.OverlapSphere(..., GrabLayer)가
+  LayerMask Nothing(값=0)을 받으면 어떤 오브젝트도 검출하지 않아
+  집기 동작 자체가 불가 상태.
+  또한 candle 오브젝트에 레이어가 지정되어 있지 않아
+  레이어 마스크를 설정해도 연결이 안 되는 구조였음.
+
+【해결방법】
+  (1) candle, candle(1) Rigidbody → Use Gravity 체크 해제
+  (2) Edit → Project Settings → Tags and Layers 에서
+      빈 슬롯에 "Grabbable" 레이어 추가 (User Layer 3)
+  (3) candle, candle(1) Layer를 "Grabbable"로 지정
+      → 자식 포함 변경 팝업에서 "Yes, change children" 선택
+  (4) Player_OVRInput_Parts → EX_OVRInput_Grab → Grab Layer에서
+      "Grabbable" 레이어 체크
+
+
+────────────────────────────────────────────────────────────────
+에러 5. 씬 전환 미작동 — ExitDoor 트리거 실제 깊이 8cm
+────────────────────────────────────────────────────────────────
+
+【문제】
+  플레이어가 door 오브젝트 앞으로 이동해도 씬 전환이 발동하지 않음.
+  OnTriggerEnter 이벤트 및 거리 기반 감지 모두 미작동.
+
+【원인】
+  ExitDoor Transform Scale = (X:1.2, Y:2.2, Z:0.1).
+  코드에서 BoxCollider size를 (1, 2, 0.8)로 설정했는데
+  이 값은 로컬 좌표 기준이어서 월드 좌표로 변환하면
+  Z 깊이 = 0.8 × 0.1 = 0.08m (약 8cm) 에 불과.
+  플레이어가 문을 통과해도 8cm 안에 정확히 진입하지 않으면
+  트리거가 감지되지 않았음.
+  추가로 씬에 이미 non-trigger BoxCollider가 존재하는데
+  Awake()에서 트리거 콜라이더를 또 추가해 총 2개가 붙는 문제도 동반.
+
+【해결방법】
+  Inspector에서 BoxCollider를 아래와 같이 직접 수정 (방법 A):
+    Is Trigger = 체크 ON
+    Center: X=0, Y=0, Z=-6
+    Size:   X=1, Y=1, Z=8
+  (로컬 기준 Z=8 × Scale 0.1 = 월드 0.8m 깊이 확보)
+
+
+────────────────────────────────────────────────────────────────
+에러 6. Unity Safe Mode 진입 — 연쇄 컴파일 오류
+         (스크립트 파일 내 null 바이트 오염)
+────────────────────────────────────────────────────────────────
+
+【문제】
+  Unity가 Safe Mode로 진입.
+  우리 스크립트뿐 아니라 OVRGrabbable.cs, OVRGrabber.cs 등
+  Meta SDK 자체 파일에서도 "Scene3AManager 타입 미발견",
+  "OVRGrabbable 타입 미발견" 등 엉뚱한 위치에서 에러 대량 발생.
+
+【원인】
+  프로젝트 스크립트 파일들에 null 바이트(0x00)가 삽입되어
+  EdenProject.Scripts 어셈블리 컴파일 자체가 실패.
+  해당 어셈블리는 autoReferenced: true 설정으로
+  Oculus.VR 어셈블리가 자동 참조하고 있었기 때문에
+  참조 대상 컴파일이 실패하자 Oculus.VR 어셈블리도 연쇄 실패.
+  오류 표시 위치가 OVRGrabbable.cs 등 Meta SDK 파일로 나타나
+  실제 원인 파악이 어려웠음.
+
+【해결방법】
+  스크립트 파일들에서 null 바이트 전부 제거.
+  제거 완료 후 Unity Safe Mode 배너에서
+  "Exit Safe Mode" 버튼 클릭 → 전체 재컴파일하여 해결.
+
+
+────────────────────────────────────────────────────────────────
+에러 7. 씬 3단계 미진행 (clip3 재생 안됨) + 캔들 그랩 완전 미작동
+         (CandleGrabTrigger.cs 파일 말단 소실 + 감지 방식 불일치)
+────────────────────────────────────────────────────────────────
+
+【문제】
+  clip1, clip2까지는 정상 재생되나 촛불에 가까이 가도
+  clip3이 재생되지 않고 씬이 3단계로 진행되지 않음.
+  컨트롤러로 캔들을 집으려 해도 아무 반응 없음.
+
+【원인 1 — CandleGrabTrigger.cs 파일 후반부 소실】
+  CandleGrabTrigger.cs 파일이 저장 중 손상되어
+  파일 후반부의 IsNowAttachedToHandHierarchy(),
+  IsNearAnyHand(), OnTriggerEnter() 등 핵심 메서드가
+  모두 누락된 채로 컴파일되고 있었음.
+  근접 감지 및 트리거 이벤트가 전혀 발동하지 않음.
+
+【원인 2 — 감지 방식 불일치 (물리 충돌 vs OVRInput 레이)】
+  기존 코드가 물리 SphereCollider 충돌 방식으로만 작동하도록 설계됐는데
+  실제 사용하는 컨트롤러는 OVRInput 기반 레이/그립 트리거 방식.
+  보조 감지 방법으로 OVRGrabbable 반사 참조, 부모 변경 감지,
+  이동량 감지 3가지를 두었으나 모두 "캔들을 이동시켜주는 시스템 자체"가
+  없는 상태여서 어느 것도 작동하지 않았음.
+
+【해결방법】
+  CandleGrabTrigger.cs 전체 재작성:
+  - 레이 집기: LIndexTrigger(레이 발사) 누른 채로 LHandTrigger(그립) 입력 시
+    레이캐스트로 캔들 히트 여부 확인 → 집기 성공 판정
+  - 근접 집기: 손이 handAttachDistance(0.8m) 이내일 때
+    LHandTrigger 또는 RHandTrigger 입력 시 집기 성공
+  - 물리 부착: 집기 성공 시 SetParent()로 캔들을 손 오브젝트에 붙여
+    손 움직임을 따라가도록 구현
+  Scene3AManager에 TryOVRGrabDetection() 백업 감지 메서드 추가하여
+  CandleGrabTrigger 미감지 시에도 매니저 자체에서 이중 체크.
+
+
+────────────────────────────────────────────────────────────────
+에러 8. 코드 버그 — XRBaseInteractable.MovementType 참조 오류
+         + DoorTrigger.cs NullReferenceException
+────────────────────────────────────────────────────────────────
+
+【문제】
+  CandleGrabTrigger.cs에서 컴파일 오류 발생.
+  DoorTrigger.cs에서 런타임 NullReferenceException 발생.
+
+【원인 1 — MovementType 열거형 위치 오류】
+  코드에서 XRBaseInteractable.MovementType.Instantaneous로 참조했으나
+  XRI 2.x 기준 MovementType 열거형은 XRBaseInteractable이 아닌
+  XRGrabInteractable 내부에 정의되어 있어 타입을 찾지 못함.
+
+【원인 2 — GetComponent가 자식 오브젝트 콜라이더를 탐색하지 못함】
+  DoorTrigger.cs Awake()에서 GetComponent<Collider>()를 사용했는데
+  Collider가 자식 오브젝트에 붙어있는 경우 루트만 탐색하는
+  GetComponent는 null을 반환 → NullReferenceException 발생.
+
+【해결방법】
+  원인 1: XRBaseInteractable.MovementType
+       → XRGrabInteractable.MovementType 으로 수정
+
+  원인 2: GetComponent<Collider>()
+       → GetComponentInChildren<Collider>() 로 수정
+       + if (col != null && !col.isTrigger) 로 null 체크 추가
+
+================================================================
+  총 8건 에러 (세부 원인 포함 12개 항목)  |  작성일: 2026-04-12
+================================================================

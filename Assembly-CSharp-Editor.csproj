@@ -59,7 +59,7 @@
     <UnityVersion>2022.3.62f3</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\eupho\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.2.1\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\eupho\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.2.2\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.62f3\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.62f3\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
@@ -70,8 +70,10 @@
     <Compile Include="Assets\HW_09\Scripts\Editor\TerrainLayerSetup.cs" />
     <Compile Include="Assets\HW_09\Scripts\Editor\XRProfileSetup.cs" />
     <Compile Include="Assets\HW_09\Scripts\Editor\Scene2Builder.cs" />
+    <Compile Include="Assets\HW_09\Scripts\Editor\MissingScriptFixer.cs" />
     <Compile Include="Assets\HW_09\Scripts\Editor\SFHubBuilder.cs" />
     <Compile Include="Assets\HW_09\Scripts\Editor\SFCorridorBuilder.cs" />
+    <Compile Include="Assets\HW_09\Scripts\Editor\MissingScriptFinder.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

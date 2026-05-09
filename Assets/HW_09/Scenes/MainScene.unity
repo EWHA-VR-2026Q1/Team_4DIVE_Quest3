@@ -5419,7 +5419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9762c3aebe684e4ea4d28f2f2684d87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetScene: Set4_B
+  targetScene: Scene4_B
   triggerRadius: 3
   hintUI: {fileID: 0}
 --- !u!65 &1461725363
