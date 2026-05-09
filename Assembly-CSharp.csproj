@@ -117,6 +117,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
+    <None Include="Assets\HW_09\Heejin\Lowpoly Forest Pack Winter\Lowpoly Forest Pack READ ME - Copy.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\HW_09\Heejin\DownloadAssets\Room\Settings\Note.txt" />
     <None Include="Assets\HW_09\eunheay\Fantasy Forest Environment Free Sample\StandardNoCulling.shader" />
