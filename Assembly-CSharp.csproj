@@ -105,6 +105,7 @@
     <Compile Include="Assets\HW_09\Scripts\Gayoung\AutoSceneChange1A.cs" />
     <Compile Include="Assets\HW_09\Scripts\EX_OVRInput\EX_OVRInput_Teleport.cs" />
     <Compile Include="Assets\HW_09\Scripts\eunheay\PlayerMain.cs" />
+    <Compile Include="Assets\HW_09\Scripts\Heejin\IceBlockGrabber3B.cs" />
     <Compile Include="Assets\Lecture\EX_Events_Controls\Interface_Ray.cs" />
     <Compile Include="Assets\HW_09\Scripts\EX_OVRInput\EX_OVRInput_RayForInteraction.cs" />
     <Compile Include="Assets\Lecture\EX_Events_Controls\Controller_ChangeColor.cs" />
@@ -117,7 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
-    <None Include="Assets\HW_09\Heejin\Lowpoly Forest Pack Winter\Lowpoly Forest Pack READ ME - Copy.txt" />
+    <None Include="Assets\HW_09\Heejin\Forest\Lowpoly Forest Pack READ ME - Copy.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\HW_09\Heejin\DownloadAssets\Room\Settings\Note.txt" />
     <None Include="Assets\HW_09\eunheay\Fantasy Forest Environment Free Sample\StandardNoCulling.shader" />
@@ -125,8 +126,11 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\HW_09\ReadMe\ReadMe.txt" />
+    <None Include="Assets\HW_09\Heejin\Fire\Free Fire VFX\Shaders\SH_Vefects_VFX_SRP_Particles_Erosion_01.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\HW_09\Heejin\Fire\Free Fire VFX\Shaders\SH_Vefects_VFX_SRP_Heat_Haze_01.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\HW_09\Heejin\Fire\Free Fire VFX\_ Extra\Shaders\SH_Vefects_Extra_Billboard_01.shader" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
@@ -134,9 +138,11 @@
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\HW_09\Heejin\Fire\Free Fire VFX\Shaders\SH_Vefects_VFX_SRP_Fire_Flames_01.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\HW_09\Gayoung\Gizmos\waterWave.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\HW_09\Heejin\Fire\Free Fire VFX\_ Extra\Shaders\SH_Vefects_Extra_Grid_01.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
