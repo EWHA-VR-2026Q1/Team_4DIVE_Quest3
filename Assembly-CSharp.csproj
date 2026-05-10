@@ -64,6 +64,7 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.62f3\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\HW_09\Scripts\Heejin\Scene3B\PanelInteraction3B.cs" />
     <Compile Include="Assets\Lecture\EX_CharacterController\EX_InputSystem_XR_DirectAccess.cs" />
     <Compile Include="Assets\HW_09\Scripts\eunheay\Radio2B.cs" />
     <Compile Include="Assets\Lecture\EX_Events_Controls\EX_SceneChanger.cs" />
@@ -79,10 +80,12 @@
     <Compile Include="Assets\HW_09\Scripts\heejo\SceneManager3A.cs" />
     <Compile Include="Assets\QuickOutline\Scripts\Outline.cs" />
     <Compile Include="Assets\Lecture\EX_Events_Controls\Controller_Outline.cs" />
+    <Compile Include="Assets\HW_09\Scripts\Heejin\Scene3B\IceProximityDetector3B.cs" />
     <Compile Include="Assets\Lecture\EX_Events_Controls\Controller_Video_Control.cs" />
     <Compile Include="Assets\HW_09\Scripts\Heejin\EditorTestCamera4B.cs" />
     <Compile Include="Assets\HW_09\Scripts\Heejin\ExitDoorTrigger4B.cs" />
     <Compile Include="Assets\SceneChanger.cs" />
+    <Compile Include="Assets\HW_09\Scripts\Heejin\Scene3B\OutlineGlow3B.cs" />
     <Compile Include="Assets\Lecture\D05_4Zones\D05_LoadScene.cs" />
     <Compile Include="Assets\HW_09\Scripts\eunheay\Audio2B.cs" />
     <Compile Include="Assets\HW_09\Scripts\Gayoung\Audios1A.cs" />
@@ -105,12 +108,13 @@
     <Compile Include="Assets\HW_09\Scripts\Gayoung\AutoSceneChange1A.cs" />
     <Compile Include="Assets\HW_09\Scripts\EX_OVRInput\EX_OVRInput_Teleport.cs" />
     <Compile Include="Assets\HW_09\Scripts\eunheay\PlayerMain.cs" />
-    <Compile Include="Assets\HW_09\Scripts\Heejin\IceBlockGrabber3B.cs" />
     <Compile Include="Assets\Lecture\EX_Events_Controls\Interface_Ray.cs" />
     <Compile Include="Assets\HW_09\Scripts\EX_OVRInput\EX_OVRInput_RayForInteraction.cs" />
     <Compile Include="Assets\Lecture\EX_Events_Controls\Controller_ChangeColor.cs" />
     <Compile Include="Assets\Lecture\EX_Events_Controls\Controller_Animator.cs" />
     <Compile Include="Assets\HW_09\Scripts\Shared\ManagerMain.cs" />
+    <Compile Include="Assets\HW_09\Scripts\Heejin\Scene3B\IceBlockGrabber3B.cs" />
+    <Compile Include="Assets\HW_09\Scripts\Heejin\Scene3B\SceneManager3B.cs" />
     <Compile Include="Assets\HW_09\Scripts\eunheay\ExitTrigger2B.cs" />
     <Compile Include="Assets\Lecture\EX_Events_Controls\Controller_SceneChanger.cs" />
     <Compile Include="Assets\HW_09\Scripts\eunheay\Manager2A.cs" />
