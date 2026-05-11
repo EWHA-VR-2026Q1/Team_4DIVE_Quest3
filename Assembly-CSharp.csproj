@@ -104,6 +104,7 @@
     <Compile Include="Assets\Lecture\EX_Events_Controls\Event_OnRay.cs" />
     <Compile Include="Assets\BoatMove.cs" />
     <Compile Include="Assets\HW_09\Scripts\Shared\DoorMain.cs" />
+    <Compile Include="Assets\HW_09\Scripts\Heejin\OutroManager.cs" />
     <Compile Include="Assets\EX_CharacterController\EX_InputSystem_XR.cs" />
     <Compile Include="Assets\HW_09\Scripts\eunheay\Player2A.cs" />
     <Compile Include="Assets\HW_09\Scripts\Gayoung\WaterAudio1A1B.cs" />

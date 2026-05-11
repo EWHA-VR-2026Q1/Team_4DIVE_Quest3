@@ -23,6 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/HW_09/Scenes/Scene3_B.unity
     guid: 7f9cd0b1a8f97454383d9393185b6ef3
+  - enabled: 0
+    path: Assets/HW_09/Scenes/OutroScene.unity
+    guid: 0b05da88a4d99e14eb3f6c72d66feba5
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: de259661b0c17334f8204e758eee4bfc, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 857862b1d31485546a720d561b771e61, type: 2}
