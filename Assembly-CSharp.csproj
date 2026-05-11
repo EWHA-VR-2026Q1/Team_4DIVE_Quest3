@@ -70,6 +70,7 @@
     <Compile Include="Assets\Lecture\EX_Events_Controls\EX_SceneChanger.cs" />
     <Compile Include="Assets\HW_09\Scripts\heejo\DoorTrigger3A.cs" />
     <Compile Include="Assets\HW_09\Scripts\Gayoung\OceanMesh1A.cs" />
+    <Compile Include="Assets\EX_Events_Controls\Interface_Collision.cs" />
     <Compile Include="Assets\HW_09\Scripts\eunheay\Manager2B.cs" />
     <Compile Include="Assets\HW_09\Scripts\Gayoung\BoatMove1A.cs" />
     <Compile Include="Assets\Lecture\EX_CharacterController\EX_OVRInput_Combined_V2.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Assets\QuickOutline\Scripts\Outline.cs" />
     <Compile Include="Assets\Lecture\EX_Events_Controls\Controller_Outline.cs" />
     <Compile Include="Assets\HW_09\Scripts\Heejin\Scene3B\IceProximityDetector3B.cs" />
+    <Compile Include="Assets\EX_Events_Controls\Controller_Audio_Control.cs" />
     <Compile Include="Assets\Lecture\EX_Events_Controls\Controller_Video_Control.cs" />
     <Compile Include="Assets\HW_09\Scripts\Heejin\EditorTestCamera4B.cs" />
     <Compile Include="Assets\HW_09\Scripts\Heejin\ExitDoorTrigger4B.cs" />
@@ -89,23 +91,30 @@
     <Compile Include="Assets\Lecture\D05_4Zones\D05_LoadScene.cs" />
     <Compile Include="Assets\HW_09\Scripts\eunheay\Audio2B.cs" />
     <Compile Include="Assets\HW_09\Scripts\Gayoung\Audios1A.cs" />
+    <Compile Include="Assets\EX_CharacterController\EX_OVRInput_Hand_Least.cs" />
     <Compile Include="Assets\HW_09\Scripts\Heejin\NPC1Behavior4B.cs" />
     <Compile Include="Assets\HW_09\Scripts\Heejin\SceneIntroManager4B.cs" />
     <Compile Include="Assets\HW_09\Scripts\eunheay\Player2B.cs" />
     <Compile Include="Assets\HW_09\Scripts\EX_OVRInput\EX_OVRInput_Ray.cs" />
+    <Compile Include="Assets\EX_Events_Controls\Controller_Print.cs" />
     <Compile Include="Assets\HW_09\Scripts\eunheay\Interactable2B.cs" />
     <Compile Include="Assets\Lecture\EX_Events_Controls\Controller_AnimaitonEvent_LoadScene.cs" />
+    <Compile Include="Assets\EX_Events_Controls\Controller_HandInteraction.cs" />
+    <Compile Include="Assets\EX_CharacterController\EX_InputSystem_PC_V2.cs" />
     <Compile Include="Assets\Lecture\EX_Events_Controls\Event_OnRay.cs" />
     <Compile Include="Assets\BoatMove.cs" />
     <Compile Include="Assets\HW_09\Scripts\Shared\DoorMain.cs" />
+    <Compile Include="Assets\EX_CharacterController\EX_InputSystem_XR.cs" />
     <Compile Include="Assets\HW_09\Scripts\eunheay\Player2A.cs" />
     <Compile Include="Assets\HW_09\Scripts\Gayoung\WaterAudio1A1B.cs" />
     <Compile Include="Assets\HW_09\Scripts\heejo\CandleGrabTrigger3A.cs" />
     <Compile Include="Assets\HW_09\Scripts\Heejin\EditorHandSimulator4B.cs" />
     <Compile Include="Assets\Lecture\EX_Events_Controls\Controller_LoadScene.cs" />
+    <Compile Include="Assets\EX_Events_Controls\Event_OnCollision.cs" />
     <Compile Include="Assets\HW_09\Scripts\Heejin\HandshakeDetector4B.cs" />
     <Compile Include="Assets\HW_09\Scripts\Shared\ISampleInteractable.cs" />
     <Compile Include="Assets\HW_09\Scripts\Gayoung\AutoSceneChange1A.cs" />
+    <Compile Include="Assets\EX_CharacterController\EX_OVRInput_Combined.cs" />
     <Compile Include="Assets\HW_09\Scripts\EX_OVRInput\EX_OVRInput_Teleport.cs" />
     <Compile Include="Assets\HW_09\Scripts\eunheay\PlayerMain.cs" />
     <Compile Include="Assets\Lecture\EX_Events_Controls\Interface_Ray.cs" />
@@ -114,7 +123,10 @@
     <Compile Include="Assets\Lecture\EX_Events_Controls\Controller_Animator.cs" />
     <Compile Include="Assets\HW_09\Scripts\Shared\ManagerMain.cs" />
     <Compile Include="Assets\HW_09\Scripts\Heejin\Scene3B\IceBlockGrabber3B.cs" />
+    <Compile Include="Assets\D11_HandInteraction\EX_Cube.cs" />
+    <Compile Include="Assets\EX_Events_Controls\Event_OnHand_Least.cs" />
     <Compile Include="Assets\HW_09\Scripts\Heejin\Scene3B\SceneManager3B.cs" />
+    <Compile Include="Assets\EX_Events_Controls\Interface_Hand_Least.cs" />
     <Compile Include="Assets\HW_09\Scripts\eunheay\ExitTrigger2B.cs" />
     <Compile Include="Assets\Lecture\EX_Events_Controls\Controller_SceneChanger.cs" />
     <Compile Include="Assets\HW_09\Scripts\eunheay\Manager2A.cs" />
@@ -151,6 +163,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\EX_Events_Controls\EX_OutlineShader.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>

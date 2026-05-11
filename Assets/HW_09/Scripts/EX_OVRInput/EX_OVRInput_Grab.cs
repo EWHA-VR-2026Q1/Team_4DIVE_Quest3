@@ -1,4 +1,4 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 
 public class EX_OVRInput_Grab : MonoBehaviour
 {
@@ -74,10 +74,10 @@ public class EX_OVRInput_Grab : MonoBehaviour
 
         GrabbedRB.isKinematic = true;
 
-        // PlayerøÕ √Êµπ ¡¶∞≈
+        // PlayerÏôÄ Ï∂©Îèå Ï†úÍ±∞
         Physics.IgnoreCollision(ObjectCollider, PlayerCollider, true);
 
-        // offset ∞ËªÍ
+        // offset Í≥ÑÏÇ∞
         PosOffset = Quaternion.Inverse(LeftHand.rotation) * (GrabbedRB.position - LeftHand.position);
 
         RotOffset = Quaternion.Inverse(LeftHand.rotation) * GrabbedRB.rotation;
@@ -97,7 +97,7 @@ public class EX_OVRInput_Grab : MonoBehaviour
     {
         GrabbedRB.isKinematic = false;
 
-        // ¥¯¡ˆ±‚
+        // ÎçòÏßÄÍ∏∞
         GrabbedRB.velocity = OVRInput.GetLocalControllerVelocity(OVRInput.Controller.LTouch);
 
         GrabbedRB.angularVelocity = OVRInput.GetLocalControllerAngularVelocity(OVRInput.Controller.LTouch);

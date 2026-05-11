@@ -1,28 +1,21 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 public class EX_OVRInput_Teleport : MonoBehaviour
 {
     CharacterController Character;
-
     public Transform RightController;
-
-    public LineRenderer Arc;
-
-    public GameObject Marker;
-
     public LayerMask TeleportLayer;
 
     public int resolution = 30;
-
-    public float velocity = 8f;
-
+    public float teleportVelocity = 8f;
     public float timestep = 0.08f;
-
+    bool hasValidTarget = false;
+    bool teleportActive = false;
+    
+    public LineRenderer Arc;
+    public GameObject Marker;
     Vector3[] LineFragments;
-
-    bool active;
-
     Vector3 Target;
 
     void Start()
@@ -36,32 +29,35 @@ public class EX_OVRInput_Teleport : MonoBehaviour
 
     void Update()
     {
+        TeleportControl();
+    }
+
+    void TeleportControl()
+    {
         bool trigger = OVRInput.Get(OVRInput.RawButton.RIndexTrigger);
 
         if (trigger)
         {
-            active = true;
+            teleportActive = true;
             Arc.enabled = true;
-            Preview();
+            TeleportPreview();
         }
         else
         {
-            if (active)
+            if (teleportActive)
                 Teleport();
 
-            active = false;
-
+            teleportActive = false;
             Arc.enabled = false;
-
             Marker.SetActive(false);
         }
     }
 
-    void Preview()
+    void TeleportPreview()
     {
+        hasValidTarget = false;
         Vector3 start = RightController.position + RightController.forward * 0.04f;
-
-        Vector3 vel = RightController.forward * velocity;
+        Vector3 vel = RightController.forward * teleportVelocity;        
 
         for (int i = 0; i < resolution; i++)
         {
@@ -75,6 +71,8 @@ public class EX_OVRInput_Teleport : MonoBehaviour
             {
                 if (Physics.Linecast(LineFragments[i - 1], p, out RaycastHit hit, TeleportLayer))
                 {
+                    hasValidTarget = true;
+
                     Target = hit.point;
 
                     Marker.SetActive(true);
@@ -89,16 +87,14 @@ public class EX_OVRInput_Teleport : MonoBehaviour
         }
 
         Arc.positionCount = resolution;
-
         Arc.SetPositions(LineFragments);
     }
 
     void Teleport()
     {
+        if (!hasValidTarget) return;
         Character.enabled = false;
-
         transform.position = Target + Vector3.up * 0.5f;
-
         Character.enabled = true;
     }
 }
