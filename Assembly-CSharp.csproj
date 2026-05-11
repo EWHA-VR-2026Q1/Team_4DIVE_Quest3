@@ -129,6 +129,7 @@
     <Compile Include="Assets\EX_Events_Controls\Interface_Hand_Least.cs" />
     <Compile Include="Assets\HW_09\Scripts\eunheay\ExitTrigger2B.cs" />
     <Compile Include="Assets\Lecture\EX_Events_Controls\Controller_SceneChanger.cs" />
+    <Compile Include="Assets\HW_09\Scripts\heejo\CandleGrabber3A.cs" />
     <Compile Include="Assets\HW_09\Scripts\eunheay\Manager2A.cs" />
     <Compile Include="Assets\HW_09\Scripts\eunheay\ExitTrigger2A.cs" />
   </ItemGroup>

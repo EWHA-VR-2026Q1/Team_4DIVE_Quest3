@@ -5991,6 +5991,9 @@ MonoBehaviour:
   allowRightHand: 1
   useController: 1
   useHandTracking: 1
+  enableLaserGrab: 1
+  rayDistance: 8
+  sphereRadius: 0.08
   manager: {fileID: 2078132810}
   drawGizmo: 1
 --- !u!54 &1511739589
