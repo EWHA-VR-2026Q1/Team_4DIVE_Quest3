@@ -937,6 +937,7 @@ MonoBehaviour:
   audio2: {fileID: 8300000, guid: 9e87ea51398e2f748b683bc76831e6bb, type: 3}
   audio3: {fileID: 8300000, guid: a6aaa590e27df044aa73e164f8f0d15f, type: 3}
   audio4: {fileID: 8300000, guid: c71c64f3730d8ae46888818195e86367, type: 3}
+  audio1MaxDuration: 9.7
   buttonObject: {fileID: 2088630344}
   textOffset: {x: 0, y: 0.35, z: 0}
   finalTextOffset: {x: 0, y: 2, z: 0}

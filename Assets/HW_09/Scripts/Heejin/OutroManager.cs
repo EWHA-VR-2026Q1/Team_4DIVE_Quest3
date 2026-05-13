@@ -11,6 +11,7 @@ namespace HW09.Heejin
         public AudioClip audio2;
         public AudioClip audio3;
         public AudioClip audio4;
+        public float audio1MaxDuration = 9.7f;
 
         [Header("Button")]
         public GameObject buttonObject;
@@ -91,24 +92,26 @@ namespace HW09.Heejin
             _buttonReady = false;
             SetButtonVisual(false, false);
 
-            yield return PlayClip(audio1);
+            yield return PlayClip(audio1, audio1MaxDuration);
             yield return PlayClip(audio2);
             yield return PlayClip(audio3);
             yield return PlayClip(audio4);
 
             _buttonReady = true;
             SetButtonVisual(true, false);
-            SetButtonText("CONTINUE");
+            SetButtonText("STOP");
         }
 
-        IEnumerator PlayClip(AudioClip clip)
+        IEnumerator PlayClip(AudioClip clip, float maxDuration = -1f)
         {
             if (clip == null) yield break;
 
             audioSource.Stop();
             audioSource.clip = clip;
             audioSource.Play();
-            yield return new WaitForSeconds(clip.length);
+            float duration = maxDuration > 0f ? Mathf.Min(clip.length, maxDuration) : clip.length;
+            yield return new WaitForSeconds(duration);
+            audioSource.Stop();
         }
 
         void PressButton()
